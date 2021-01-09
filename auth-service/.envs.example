@@ -1,0 +1,12 @@
+# Django
+# --------------------------------------
+DEBUG=True
+SECRET_KEY=random_key
+
+# PostgreSQL
+# --------------------------------------
+POSTGRES_DB=db-name
+POSTGRES_USER=user
+POSTGRES_PASSWORD=password
+POSTGRES_HOST=host
+POSTGRES_PORT=5432

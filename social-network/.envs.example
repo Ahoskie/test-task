@@ -1,0 +1,16 @@
+# Django
+# --------------------------------------
+DEBUG=True
+SECRET_KEY=random_key
+AUTH_SERVICE_URL=https://example.org/
+
+# The jwt that social-network service uses to make requests to the auth service (example value)
+WEB_SERVICE_JWT=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjEwNzUyMTg4LCJqdGkiOiI0Mzk2MGQ4YjZlMjQ0NWRlOWEzMDY5NWFmMDliOWVhYSIsInNvbWVfZmllbGQiOjIyMiwic29tZV9maWVsZF8yIjoiaGVsbG8td29ybGQifQ.kGpxoz-0CxjcngLbfCCZ-MrjnbO6y02uNx46YLlpZH8
+
+# PostgreSQL
+# --------------------------------------
+POSTGRES_DB=db-name
+POSTGRES_USER=user
+POSTGRES_PASSWORD=password
+POSTGRES_HOST=host
+POSTGRES_PORT=5432

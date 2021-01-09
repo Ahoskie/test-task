@@ -1,0 +1,64 @@
+version: '3.7'
+
+volumes:
+  db-auth-data: {}
+  db-social-network-data: {}
+
+
+services:
+  db-auth:
+    build:
+      context: auth-service/backend
+      dockerfile: ./compose/postgres/Dockerfile
+    env_file:
+      - auth-service/.envs
+    volumes:
+      - db-auth-data:/var/lib/postgresql/data
+
+  db-social-network:
+    build:
+      context: social-network/backend
+      dockerfile: ./compose/postgres/Dockerfile
+    env_file:
+      - social-network/.envs
+    volumes:
+      - db-social-network-data:/var/lib/postgresql/data
+
+  auth-service:
+    build:
+      context: auth-service/backend
+      dockerfile: ./compose/django/Dockerfile
+    env_file:
+      - auth-service/.envs
+    ports:
+      - '8010:8010'
+    volumes:
+      - ./auth-service/backend:/auth-service:Z
+    depends_on:
+      - db-auth
+    command: ./compose/django/entrypoint.sh
+
+  social-network:
+    build:
+      context: social-network/backend
+      dockerfile: ./compose/django/Dockerfile
+    env_file:
+     - social-network/.envs
+    ports:
+      - '8000:8000'
+    volumes:
+      - ./social-network/backend:/social-network:Z
+    depends_on:
+      - db-social-network
+      - auth-service
+    command: ./compose/django/entrypoint.sh
+
+  automated-bot:
+    build:
+      context: automated-bot/
+      dockerfile: Dockerfile
+    env_file:
+      - automated-bot/.envs
+    depends_on:
+      - social-network
+      - auth-service
