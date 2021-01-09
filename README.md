@@ -16,9 +16,9 @@ real values.
 Run this lines in terminal to implement the instructions from above:
 ```shell
 cd test-task
-cp social-network/.envs.example /social-network/.envs
-cp auth-service/.envs.example /auth-service/.envs
-cp automated-bot/.envs.example / automated-bot/.envs
+cp social-network/.envs.example social-network/.envs
+cp auth-service/.envs.example auth-service/.envs
+cp automated-bot/.envs.example automated-bot/.envs
 ```
 
 After you've done that, you should redefine the variables.
